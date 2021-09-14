@@ -1,0 +1,146 @@
+.user {
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    background: var(--wrapper);
+    color: var(--text-contrast-color);
+    border-radius: .5rem;
+    width: 50rem;
+    max-width: 90%;
+    margin: 0 auto;
+    margin-top: 2.5rem;
+}
+
+.user__wrapper  {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+    flex-wrap: wrap;
+    padding: 5rem 5rem 2rem 5rem;
+}
+
+.user a {
+    color: var(--text-contrast-color);
+}
+
+.user__title {
+    text-transform: uppercase;
+    font-size: var(--font-bigger-size);
+    align-self: flex-start;
+    position: relative;
+}
+
+.user__title::after {
+    background: var(--first-color);
+    display: block;
+    content: '';
+    width: 105%;
+    height: 1rem;
+    border-radius: 5rem;
+    position: absolute;
+    bottom: .2rem;
+    left: -.5rem;
+    z-index: -1;
+}
+
+.user__field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.user__label {
+    font-size: var(--font-lower-size);
+}
+
+.user__input {
+    height: 3rem;
+    border: none;
+    outline: none;
+    border-bottom: .3rem solid var(--input-color);
+    font-weight: 300;
+    transition: border-bottom .3s ease;
+}
+
+.user__input:focus {
+    border-bottom: .3rem solid var(--first-color);
+}
+
+.user__action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.user__redirect {
+    font-size: 1.4rem;
+    text-align: center;
+    flex: 1;
+    text-decoration: none;
+}
+
+.user__redirect:hover {
+    text-decoration: underline;
+}
+
+.user__button {
+    background: var(--first-color);
+    width: 60%;
+    padding: 1.2rem .5rem;
+    border: none;
+    border-radius: .3rem;
+    cursor: pointer;
+    transition: transform .3s ease;
+    margin-left: auto;
+}
+/* SPECIAL */
+.user__button--complete {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+
+
+.user__button:active {
+    transform: scale(1.2);
+}
+
+.user__forget {
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.user_genders {
+    display: flex;
+    gap: 1rem;
+}
+
+.user__genderlabel {
+    background: var(--first-transparent-color);
+    height: 6rem;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: .1rem solid var(--first-color); */
+    border-radius: .2rem;
+    transition: all .3s ease;
+}
+
+.user_gender {
+    display: none;
+}
+
+.user_gender:checked + .user__genderlabel{
+    background: var(--first-color);
+}
+
+/* IN FORGET PAGE */
+.user__redirect--complete {
+    margin-top: .5rem;
+    text-align: center;
+}

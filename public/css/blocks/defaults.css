@@ -1,0 +1,64 @@
+:root {
+    --font-general-family: 'IBM Plex Mono','Lato', arial;
+    /* Background */
+    --background-color: #00112C;
+    --background-light-color: #04294F;
+    /* Typografy */
+    --text-color: #fff;
+    --text-contrast-color: rgba(0,0,0,.8);
+    --first-color: #19D499;
+    --first-transparent-color: #b0f3de;
+    --second-color: #fad207;
+
+    --font-general-size: 1.6rem;
+    --font-lower-size: 1.8rem;
+    --font-low-size: 2rem;
+    --font-mid-size: 2.2rem;
+    --font-middle-size: 2.4rem;
+    --font-big-size: 2.6rem;
+    --font-bigger-size: 2.8rem;
+    --font-extra-size: 3rem;
+    /* Wrappers */
+    --wrapper: rgba(255,255,255,1);
+    /* Variety */
+    --input-color: rgba(0, 0, 0, .4);
+    --border-light: rgba(255, 255, 255, .4);
+    --edit-color: #D8DC6A;
+    --delete-color: #D72638;
+    --check-color: #18F2B2;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-general-family);
+    font-size: 1.6rem;
+}
+
+.container {
+    width: 1000px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: var(--text-color);
+}

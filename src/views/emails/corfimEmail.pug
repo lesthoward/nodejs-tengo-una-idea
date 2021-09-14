@@ -1,0 +1,10 @@
+extends ../templates/email.pug
+block content
+    .email
+        h1.email__title Verifica tu cuenta
+        a.email__button(href=tokenURL) ¡Estoy Listo!
+        .email__paragraphs
+            p.email__paragraph Plasma tus ideas y compartelas (opcional) con el resto de tu equipo de trabajo, amigos, etc. Eres libre de elegir lo que deseas hacer
+            p.email__paragraph Idea: Además es un sistema completamente flexible que puedes guiarlo para indicar intrucciones, responbilidades o tener un archivo de lectura compartido en la web, en el que solo existe un propietario.
+        p.email__paragraph Si no te funciona el botón copia/presiona la siguiente URL:
+        p.email__token= tokenURL

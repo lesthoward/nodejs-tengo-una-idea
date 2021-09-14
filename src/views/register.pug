@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+    head
+        include partials/head
+        link(rel="stylesheet", href="/css/blocks/header.css")
+        link(rel="stylesheet", href="/css/login&register.css")
+        meta(name="robots" content="noindex")
+    body 
+        include partials/header
+        .container 
+            form.user(action="/user/create" method="POST") 
+                //- if locals.authErrors.length
+                .user__wrapper
+                    if locals.authErrors.length
+                        .messages
+                            each error in locals.authErrors 
+                                p.messages__error= error.message
+                    //- pre= var_dump(locals.authErrors)
+                    h2.user__title Crear una cuenta
+                    .user__field
+                        label.user__label(for="username" ) Nombre de usuario:
+                        input.user__input(type="text", name="username" id="username" autofocus value=person.username)
+                    .user__field
+                        label.user__label(for="email" ) Correo:
+                        input.user__input(type="text", name="email" id="email" autofocus value=person.email) 
+                        //- Another way, if I don't pass a person object on get method in /register 
+                        //- `${person ? person.email : ''}`
+                    .user_genders
+                        //- Automatically select gender if was selected
+                        if person.gender === 'feminine'
+                            input.user_gender(type="radio", name="gender" value="feminine" id="feminine" checked)
+                        else
+                            input.user_gender(type="radio", name="gender" value="feminine" id="feminine")
+                        label.user__genderlabel(for="feminine") Femenino
+
+                        if person.gender === 'male'
+                            input.user_gender(type="radio", name="gender" value="male" id="male" checked)
+                        else
+                            input.user_gender(type="radio", name="gender" value="male" id="male")
+                        label.user__genderlabel(for="male" ) Masculino
+                    .user__field
+                        label.user__label(for="password") Contraseña:
+                        input.user__input(type="password", name="password" id="password" value='')
+                    .user__action
+                        button.user__button.user__button--complete Crear una cuenta 

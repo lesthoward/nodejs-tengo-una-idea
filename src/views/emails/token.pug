@@ -1,0 +1,9 @@
+extends ../templates/email.pug
+block content
+    .email
+        h1.email__title Has solicitado restablecer tu contraseña
+        a.email__button(href=tokenURL) Ir a restablecer contraseña
+        .email__paragraphs
+            p.email__paragraph Para resguardar tu seguridad este enlace tiene una duración de 1 hora
+        p.email__paragraph Si no te funciona el botón copia/presiona la siguiente URL:
+        p.email__token= tokenURL

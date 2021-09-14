@@ -1,0 +1,22 @@
+.messages {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.messages__error {
+    background: #db586e;
+    color:#fff;
+    text-align: center;
+    padding: 1rem;
+    border-radius: .3rem;
+    /* text-transform: capitalize; */
+}
+
+.messages__success {
+    background: #58dbaf;
+    color:#000;
+    text-align: center;
+    padding: 1rem;
+    border-radius: .3rem;
+}

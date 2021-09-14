@@ -1,0 +1,53 @@
+extends templates/layout
+block head
+    //- link(rel="stylesheet", href="/css/aside.css")
+    link(rel="stylesheet", href="/css/ideas-layout.css")
+block content
+    .wrapper
+        .wrapper__info
+            if !edit
+                h1.wrapper__title Asignar a: 
+                    span.wrapper__name= uniqueObjetive.name
+            else
+                h1.wrapper__title Editando a: 
+                    span.wrapper__name= uniqueIdea.name
+        if edit 
+            .show--open
+        else
+            .show
+                span.show__title Crear una idea
+                i.show__icon(class="fas fa-plus")
+        form.create(action=`${edit ? `/ideas/edit/${uniqueIdea.id}` : `/ideas/${uniqueObjetive.id}`}` method="POST")
+            input.create__input(type="text", name="name" placeholder="¿Como defines la idea?" value=`${edit ? uniqueIdea.name : ''}`)
+            textarea.create__description(name="description" placeholder="Añade un corto resumen (opcional)")
+                =`${edit ? uniqueIdea.description : ''}`
+            input.create__submit(type="submit", value="Asignar Idea")
+        if locals.successMessage.length
+            for message in locals.successMessage
+                .messages
+                    p.messages__success= message
+        if locals.errorMessage.length
+            .messages
+                for error in locals.errorMessage
+                    p.messages__error= error.message
+        if !edit
+            if !severalIdeas.length
+                p.wrapper__count Comienza a organizar tus ideas...
+            else 
+                .idea__container 
+                    if !edit
+                        for idea in severalIdeas 
+                            .idea(class=`${idea.isComplete ? 'idea--checked' : ''}`)
+                                .idea__content 
+                                    p.idea__title 
+                                        = idea.name
+                                        if idea.description.length > 1
+                                            i.idea__icon(class="fas fa-info-circle")
+                                    p.idea__description= idea.description
+                                .idea__events
+                                    a.idea__button.idea__button--check(href=`/ideas/isComplete/${idea.id}/${objetiveUrl}`)
+                                        .idea__check(class="fas fa-check")
+                                        span.idea__text Completar
+                                    a.idea__button(href=`/ideas/delete/${idea.id}/${objetiveUrl}`)
+                                        .idea__delete(class="fas fa-times")
+                                        span.idea__text Eliminar

@@ -1,0 +1,148 @@
+.item {
+
+    border: .1rem solid var(--border-light);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+}
+
+/* .item__content {
+    pointer-events: none;
+} */
+
+.item__icon {
+    font-size: 1.5rem;
+}
+
+.item__title {
+    padding: 1rem 0;
+    font-size: 2rem;
+    letter-spacing: .2rem;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 300;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.item__description {
+    max-height: 0;
+    transition: all .5s ease;
+    overflow: hidden;
+    line-height: 1.5;
+    margin-top: 1rem;
+}
+
+.item__open .item__description{
+    max-height: 25rem;
+}
+
+.item__events {
+    display: flex;
+    column-gap: 2rem;
+}
+
+.item__text {
+    margin-left: 1rem;
+}
+
+.item__events {
+    flex-direction: column;
+    row-gap: 1.5rem;
+}
+
+
+@media screen and (min-width:468px){
+    .item__events {
+        flex-direction: row;
+    }
+}
+
+.item__link {
+    align-self: flex-start;
+    user-select: none;
+    text-decoration: none;
+    /* cursor: pointer; */
+}
+
+.item__public i {
+    color: var(--check-color);
+}
+
+
+.item__edit i {
+    color: var(--edit-color);
+}
+
+.item__delete i {
+    color: var(--delete-color);
+}
+
+@media screen and (max-width:468px){
+    .item__public,
+    .item__edit,
+    .item__delete {
+        padding: 0;
+    }
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5rem;
+    row-gap: 1rem;
+}
+
+.input__text,
+.input__submit {
+    border-radius: .3rem;
+}
+.input__text {
+    flex: 1;
+    border: none;
+    outline: none;
+    display: block;
+    padding: 1.5rem;
+}
+
+.input__submit {
+    border: none;
+    height: 4rem;
+    background: var(--first-color);
+}
+
+@media screen and (min-width:768px){
+    .input {
+        position: relative;
+        height: 4.5rem;
+        border-radius: .3rem;
+        overflow: hidden;
+    }
+    .input__text {
+        height: inherit;
+        padding: 0 2rem;
+        padding-right: 20rem;
+    }
+
+    .input__submit {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: inherit;
+        max-width: 15rem;
+        padding: 0 2rem;
+    }
+    
+    .input__text,
+    .input__submit {
+        border-radius: 0;
+    }
+}
+@media screen and (min-width:468px){
+    .input__submit {
+        max-width: initial;
+    }
+}

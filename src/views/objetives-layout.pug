@@ -1,0 +1,48 @@
+extends templates/layout
+block head
+    meta(name="description", content="Hola comunidad")
+    link(rel="stylesheet", href="/css/aside.css")
+    link(rel="stylesheet", href="/css/objetives-layout.css")
+block content
+    .wrapper
+        .wrapper__info
+            h1.wrapper__title Lista de objetivos: 
+            p.wrapper__description Definir objetivos hace que dirijamos nuestras acciones y esfuerzos hacia lo que queremos conseguir. En el ámbito empresarial, todavía cobra mayor importancia tener clara una dirección y una estrategia
+        form.input(action=`${edit ? `/objetives/edit/${uniqueObjetive.url}` : '/objetives'}` method="POST")
+            input.input__text(type="text", name="name", placeholder="Escribiendo..." autofocus value=`${edit ? uniqueObjetive.name : ''}`)
+            button.input__submit 
+                =`${edit ? 'Editar objetivo' : 'Crear objetivo'}`
+            //- input.input__submit(type="submit" value="Crear objetivo") 
+        if locals.successMessage.length
+            for message in locals.successMessage
+                .messages
+                    p.messages__success= message
+        if locals.errorMessage.length
+            .messages
+                for error in locals.errorMessage
+                    p.messages__error= error.message
+                    
+        ul.wrapper__list
+            if objetives.length
+                for singleObjetive in objetives
+                    li.item
+                        .item__content 
+                            a.item__title#copy(href=`/ideas/${singleObjetive.url}`)
+                                = singleObjetive.name
+                                i.item__icon(class="fas fa-external-link-alt")
+                        .item__events
+                            //- a.item__public.item__link(href=`/objetives/isVisible/${singleObjetive.url}`)
+                            //-     if singleObjetive.isPublic
+                            //-         i.item__icon(class="fas fa-bullhorn")
+                            //-         span.item__text Público 
+                            //-     else 
+                            //-         i.item__icon(class="fas fa-lock")
+                            //-         span.item__text Privado
+                            a.item__edit.item__link(href=`/objetives/edit/${singleObjetive.url}`)
+                                i.item__icon(class="fas fa-edit")
+                                span.item__text Editar
+                            a.item__delete.item__link(href=`/objetives/delete/${singleObjetive.url}`)
+                                i.item__icon(class="fas fa-times")
+                                span.item__text Eliminar
+            else 
+                p.wrapper__count Todavía no has creado ningún objetivo...

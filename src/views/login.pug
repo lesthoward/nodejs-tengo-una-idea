@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+    head
+        include partials/head
+        link(rel="stylesheet", href="/css/blocks/header.css")
+        link(rel="stylesheet", href="/css/login&register.css")
+        meta(name="robots" content="noindex")
+    body 
+        include partials/header
+        .container 
+            form.user(action="/user/login" method="POST") 
+                .user__wrapper
+                    if customMesagge
+                        .messages
+                            p.messages__error=customMesagge
+                    if locals.authErrors.length
+                        .messages
+                            each error in locals.authErrors
+                                p.messages__error=error
+                    if message.error
+                        .messages
+                                p.messages__error= message.error
+                    if locals.authSuccess.length
+                            .messages
+                                each success in locals.authSuccess 
+                                    p.messages__success= success
+                    h2.user__title Iniciar sesión
+                    .user__field
+                        label.user__label(for="email" ) Correo:
+                        input.user__input(type="text", name="email" id="email" autofocus)
+                    .user__field
+                        label.user__label(for="password") Contraseña:
+                        input.user__input(type="password", name="password" id="password")
+                    .user__action
+                        a.user__redirect(href="/register") Todavía no tengo una cuenta
+                        button.user__button ¡Déjame Entrar! 
+                    .user__forget
+                        a.user__redirect(href="/forget") Olvidé mi contraseña

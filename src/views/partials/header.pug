@@ -1,0 +1,14 @@
+//- mixin header(auth=false)
+header 
+    .container 
+        .header__container
+            a.header__image(href="/")
+                img.header__img(src="/assets/logo.svg")
+                h1.header__title Tengo Una Idea
+            .header__navigator 
+                nav.header__nav
+                    if !auth
+                        a.header__link(href="/login") Iniciar sesión
+                        a.header__link(href="/register") Registrarse
+                    if auth
+                        a.header__link(href="https://www.linkedin.com/in/lesthoward/", target="_blank") Desarrollo Web a la Medida
