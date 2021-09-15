@@ -6,6 +6,7 @@ const crypto = require('crypto')
 const bcrypt = require('bcrypt')
 
 
+
 const readUser = passport.authenticate('local', {
     successRedirect: '/objetives',
     failureRedirect: '/login',

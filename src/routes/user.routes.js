@@ -3,11 +3,19 @@ const router = Router()
 const userController= require('../controllers/user.controller')
 const { body } = require('express-validator')
 
-
 // USER ROUTER
-router.post('/login', userController.readUser)
-router.post('/create', userController.createUser)
-router.post('/forget', userController.forget)
+router.post('/login', 
+    body('email').trim().escape(),
+    userController.readUser
+)
+router.post('/create', 
+    body('email').trim().escape(),
+    userController.createUser
+)
+router.post('/forget', 
+body('email').trim().escape(),
+    userController.forget
+)
 router.get('/token/:token', userController.gettingToken)
 router.post('/reset/:token', userController.resetPassword)
 router.get('/verify/:token', userController.confirmEmail)
