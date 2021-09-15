@@ -6,10 +6,10 @@ const juice = require('juice')
 
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
-    port: SMTP_PORT,
+    port: process.env.SMTP_PORT,
     auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
     }
 })
 
